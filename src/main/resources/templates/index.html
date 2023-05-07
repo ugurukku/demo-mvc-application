@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uğur Rent a car</title>
+    <link rel="stylesheet" href="/index/index.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header">
+        <div class="header-left">
+            <a href="/">
+                Home
+            </a>
+        </div>
+        <div class="header-right">
+            <div>
+                <a href="javascript:goToAbout()">
+                    About us
+                </a>
+            </div>
+            <div>
+                <a href="/contact">
+                    Contact
+                </a>
+            </div>
+            <div>
+                <a href="">
+                    Dealerships
+                </a>
+            </div>
+            <div>
+                <a href="">
+                    Join us
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- GREETING -->
+<div class="greeting">
+    <div id="greeting-h1">
+        <h1>
+            RENTAL CARS
+        </h1>
+    </div>
+    <div class="greeting-p">
+        <p>
+            The fleet of the  <b>"Uğur Rent a Car"</b> LLC company
+            has a large selection of cars of different brands and models with different trim levels.
+            For your choice company presents the best models of the
+            American, German, Japanese and Korean industry, such as:
+            Mercedes, BMW, Hyundai, Chevrolet, Toyota, Kia etc.
+        </p>
+    </div>
+</div>
+
+<!-- CATEGORIES -->
+
+<div class="categories">
+
+    <div class="categories-inner">
+        <div class="card">
+            <a href="/cars?category=2">
+                <div class="card-up">
+                    <h2>
+                        ECONOMY
+                    </h2>
+                </div>
+                <div class="card-down">
+                    <img src="/index/images/economy.png" alt="">
+                </div>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="/cars?category=1">
+                <div class="card-up">
+                    <h2>
+                        SUV
+                    </h2>
+                </div>
+                <div class="card-down">
+                    <img src="/index/images/suv.png" alt="">
+                </div>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="/cars?category=3">
+                <div class="card-up">
+                    <h2>
+                        SPORT
+                    </h2>
+                </div>
+                <div class="card-down">
+                    <img src="/index/images/sport.png" alt="">
+                </div>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="/cars?category=4">
+                <div class="card-up">
+                    <h2>
+                        MOTORCYCLE
+                    </h2>
+                </div>
+                <div class="card-down">
+                    <img src="/index/images/motor.png" alt="">
+                </div>
+            </a>
+        </div>
+        <a href="/cars?category=5">
+            <div class="card">
+                <div class="card-up">
+                    <h2>
+                        TRUCK
+                    </h2>
+                </div>
+                <div class="card-down">
+                    <img src="/index/images/truck.png" alt="">
+                </div>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+<div class="about-us" id="about">
+    <div id="about-us-h1">
+        <h1>
+            ABOUT US
+        </h1>
+    </div>
+    <div class="about-us-p">
+        <p>
+            Nowadays you  cannot  imagine your  life without transport. And if the conversation is about a trip abroad, about visiting sights, about an autonomous trip – the first duty you think about is transport. And here we are – KARAVAN Rent a Car Baku!
+
+            We will help you in solving this issue much more profitable, better and more reliable than other car rental companies.
+
+            We try to provide a comfortable trip without unnecessary questions and commitments. Want to rent a new, reliable, full insured car with the best conditions? <b>Uğur Rent a Car</b> is waiting for you! Dozens of reviews of our satisfied customers from all over the world tell about  us.
+        </p>
+    </div>
+</div>
+
+<div class="add">
+    <div class="add-inner">
+        <h1>Add a car!</h1>
+        <form th:action="@{/cars}" th:object="${carRequest}" method="post">
+
+            <div>
+                <label for="name">Car name : </label>
+                <input type="text" th:field="*{name}" required id="name" placeholder="Car name" />
+            </div>
+            <div>
+                <label for="year">Production year : </label>
+                <input  type="number" th:field="*{productionYear}" required id="year" placeholder="Production year" />
+            </div>
+            <div>
+                <label for="cars">Category : </label>
+                <select th:field="*{categoryId}" required id="cars">
+                    <option th:each="category : ${categories}" th:value="${category.getId()}"
+                            th:text="${category.getName()}">
+                    </option>
+                </select>
+            </div>
+            <div class="confirm">
+                <button type="submit">
+                    CONFIRM
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+<div class="add">
+    <div class="add-inner">
+        <h1>Add a user!</h1>
+        <form th:action="@{/register}" th:object="${user}" method="post">
+
+            <div>
+                <label for="email"> Email : </label>
+                <input type="email" th:field="*{email}" required id="email" placeholder="Email" />
+            </div>
+            <div id="button-wider">
+                <label for="password">Password : </label>
+                <input  type="password" th:field="*{password}" required id="password" placeholder="Password" />
+                <button type="button" onclick="see()" >see</button>
+            </div>
+
+            <div class="confirm">
+                <button type="submit">
+                    CONFIRM
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+<script src="/index/index.js"></script>
+</body>
+
+</html>

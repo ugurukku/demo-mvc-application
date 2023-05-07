@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>İstəyinizə uyğun avtomobillər burada</title>
+    <link rel="stylesheet" href="/cars/cars.css">
+</head>
+<body>
+<div class="main">
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>PRODUCTION YEAR</th>
+            <th>CATEGORY</th>
+            <th colspan="2"></th>
+        </tr>
+        </thead>
+        <tbody >
+        <tr th:each="car:${cars}">
+            <td th:text="${car.id}">1</td>
+            <td th:text="${car.name}">sala</td>
+            <td th:text="${car.productionYear}">2002</td>
+            <td th:text="${car.category.getName()}">suv</td>
+            <td>
+                <button type="button">
+                    EDIT
+                </button>
+            </td>
+            <td>
+                <form action="" method="post">
+                    <button type="submit">
+                        REMOVE
+                    </button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+</body>
+</html>
